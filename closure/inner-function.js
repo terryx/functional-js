@@ -1,5 +1,11 @@
 let count = Array.apply(null, {length: 125000});
 
+var names2 = ['terry', 'simon', 'aiksiang', 'tahir', 'cayter', 'yangshung', 'tim', 'jibone', 'sai', 'harsha', 'ian', 'joel', 'micheal', 'zhouchun'];
+
+var greetings2 = function (n) {
+ return names2[n];
+}
+
 var greetings1 = (function(){
 var names1 = ['terry', 'simon', 'aiksiang', 'tahir', 'cayter', 'yangshung', 'tim', 'jibone', 'sai', 'harsha', 'ian', 'joel', 'micheal', 'zhouchun'];
 
@@ -8,11 +14,6 @@ return function (n) {
 }
 }());
 
-var names2 = ['terry', 'simon', 'aiksiang', 'tahir', 'cayter', 'yangshung', 'tim', 'jibone', 'sai', 'harsha', 'ian', 'joel', 'micheal', 'zhouchun'];
-
-var greetings2 = function (n) {
- return names2[n];
-}
 
 console.time('With closure at 1000');
 Array.apply(null, {length: 1000}).forEach(()=> {
