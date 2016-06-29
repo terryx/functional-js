@@ -13,11 +13,5 @@ function vector() {
     }
   }
 }
-var myvector = vector();
-var stash;
-myvector.store('push', function (){
-  stash = this;
-})
-myvector.append();
-stash = 4;
-console.log(stash);
+
+//How do you get access to private array ?
