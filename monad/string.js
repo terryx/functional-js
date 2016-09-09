@@ -5,7 +5,7 @@ const string = function (spec) {
 
   api.generateForTest = function(input) {
     data = [input, spec].join(' ');
-console.log(data);
+
     return this;
   }
 
