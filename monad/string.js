@@ -1,36 +1,29 @@
 const string = function (spec) {
-  let data;
+  let data = spec;
 
-  const generateForTest = function(input) {
+  const api = {};
+
+  api.generateForTest = function(input) {
     data = [input, spec].join(' ');
-
+console.log(data);
     return this;
   }
 
-  const uppercase = function(input) {
+  api.uppercase = function() {
     data = data.toUpperCase();
     return this;
   }
 
-  const trim = function(input) {
-    data = data.trim
+  api.trim = function() {
+    data = data.trim()
     return this;
   }
 
-  const value = function() {
+  api.value = function() {
     return data;
   }
 
-  return {
-    generateForTest,
-    uppercase,
-    value
-  }
+  return Object.freeze(api);
 }
 
-const result = string('Grab')
-  .generateForTest(222)
-  .uppercase()
-  .value()
-
-console.log(result);
+module.exports = string;
