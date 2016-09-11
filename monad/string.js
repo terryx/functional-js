@@ -1,3 +1,5 @@
+'use strict';
+
 const string = function (spec) {
   let data = spec;
 
