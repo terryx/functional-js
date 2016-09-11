@@ -7,6 +7,14 @@ const constructor = () => {
     return inputs.map(input => input.toUpperCase());
   }
 
+  api.getServiceType = (input) => {
+    if (input === 'GC') {
+      return 'GRABCAR';
+    }
+
+    return input;
+  }
+
   return Object.freeze(api);
 };
 
