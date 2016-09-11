@@ -8,7 +8,6 @@ const constructor = () => {
   }
 
   return Object.freeze(api);
-
 };
 
-module.exports = constructor;
+module.exports = constructor();
