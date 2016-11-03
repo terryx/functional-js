@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node_modules/ava/cli.js --verbose",
-    "watch": "node_modules/ava/cli.js tests/** --watch"
+    "watch": "node_modules/ava/cli.js --watch"
   },
   "repository": {
     "type": "git",
