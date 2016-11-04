@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/ava/cli.js --verbose",
+    "test": "node_modules/nyc/bin/nyc.js node_modules/ava/cli.js --verbose",
     "watch": "node_modules/ava/cli.js --watch"
   },
   "repository": {
@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/terryx/functional-js#readme",
   "devDependencies": {
-    "ava": "^0.16.0"
+    "ava": "^0.16.0",
+    "coveralls": "^2.11.14",
+    "nyc": "^8.4.0"
   },
   "dependencies": {
     "lodash": "^4.15.0"

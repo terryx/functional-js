@@ -7,4 +7,4 @@ cache:
     - node_modules
 
 after_success:
-  - coveralls
+    - './node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls'
