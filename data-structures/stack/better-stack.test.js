@@ -20,6 +20,16 @@ test('remove element', t => {
   t.is(stack.isEmpty(), true)
 });
 
+test('pop element', t => {
+  const stack = Stack()
+
+  stack.push(1)
+  stack.push(2)
+  const popped = stack.pop()
+
+  t.is(popped, 2)
+})
+
 test('clear elements', t => {
   const stack = Stack()
 

@@ -8,7 +8,7 @@ class Stack {
   }
 
   pop(element) {
-    this.items.pop()
+    return this.items.pop()
   }
 
   clear() {
