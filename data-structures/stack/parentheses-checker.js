@@ -15,24 +15,25 @@ const constructor = (input) => {
     symbol;
 
   while (index < input.length && balanced) {
-    symbol = input.charAt(index) //[
+    symbol = input.charAt(index)
 
     if (openers.indexOf(symbol) > -1) {
       stack.push(symbol)
-    } else {
-      if (stack.isEmpty()) {
-        balanced = false
-      }
+    }
 
-      if (closers.indexOf(symbol) > -1) {
-        lastSymbol = stack.pop()
-        if (openers.indexOf(lastSymbol) !== closers.indexOf(symbol)) {
-          balanced = false
-        }
+    if (closers.indexOf(symbol) > -1) {
+      lastItem = stack.pop()
+
+      if (openers.indexOf(lastItem) !== closers.indexOf(symbol)) {
+        balanced = false
       }
     }
 
     index++
+  }
+
+  if (!stack.isEmpty() || !lastItem) {
+    balanced = false
   }
 
   return balanced
