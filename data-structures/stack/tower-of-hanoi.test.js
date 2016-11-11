@@ -12,7 +12,4 @@ test('TowerOfHanoi', t => {
   start.push(1)
 
   const result = TowerOfHanoi(start.size(), start, end, helper)
-  console.log(start.size());
-  console.log(helper.size());
-  console.log(end.size());
 });
