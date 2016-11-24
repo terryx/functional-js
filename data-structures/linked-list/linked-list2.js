@@ -45,6 +45,28 @@ const LinkedList = (function () {
 
       return current.element
     }
+
+    removeAt(position) {
+      let index = 0;
+      let current = head;
+      let previous;
+
+      if (position === 0) {
+        head = current.next
+      } else {
+        while(index < position) {
+          previous = current
+          current = current.next
+          index += 1;
+        }
+
+        previous.next = current.next
+      }
+
+      length -= 1;
+      return current.element
+    }
+
   }
 
   return LinkedList;
