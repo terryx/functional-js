@@ -106,8 +106,8 @@ function LinkedList() {
     let string = ''
 
     while (current.next) {
-      string += current.element + ','
-      current = current.next
+      string += current.element + ',';
+      current = current.next;
     }
 
     string += current.element
@@ -133,10 +133,10 @@ function LinkedList() {
 
   this.isEmpty = () => {
     if (length === 0) {
-      return true
+      return true;
     }
 
-    return false
+    return false;
   }
 }
 
