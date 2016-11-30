@@ -51,3 +51,9 @@ test('min', t => {
 test('max', t => {
   t.is(tree.max(), 25);
 });
+
+test('search', t => {
+  t.is(tree.search(null), false);
+  t.is(tree.search(1), false);
+  t.is(tree.search(8), true);
+});
