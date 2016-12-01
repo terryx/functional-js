@@ -1,5 +1,5 @@
 const Dictionary = require('../dictionary/dictionary');
-const Queue = require('../queue/Queue');
+const Queue = require('../queue/queue');
 
 function Graph() {
   let vertices = [];
@@ -121,7 +121,7 @@ function Graph() {
 
     color[u] = 'black';
   }
-  
+
   this.dfs = (callback) => {
     let color = initializeColor();
 
