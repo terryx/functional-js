@@ -1,24 +1,24 @@
-const Queue = () => {
-  const items = []
+const queue = () => {
+  const items = [];
 
   const enqueue = (element) => {
-    items.push(element)
+    items.push(element);
   }
 
   const dequeue = () => {
-    return items.shift()
+    return items.shift();
   }
 
   const front = () => {
-    return items[0]
+    return items[0];
   }
 
   const size = () => {
-    return items.length
+    return items.length;
   }
 
   const isEmpty = () => {
-    return items.length === 0
+    return items.length === 0;
   }
 
   return Object.freeze({
@@ -30,4 +30,4 @@ const Queue = () => {
   })
 }
 
-module.exports = Queue
+module.exports = queue;

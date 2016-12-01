@@ -1,44 +1,44 @@
 const test = require('ava')
-const Queue = require('./queue')
+const queue = require('./queue')
 
 test('insert item into queue', t => {
-  const queue = Queue()
+  const q = queue()
 
-  queue.enqueue(1)
-  queue.enqueue(2)
+  q.enqueue(1)
+  q.enqueue(2)
 
-  t.is(queue.size(), 2)
+  t.is(q.size(), 2)
 })
 
 test('remove item from queue', t => {
-  const queue = Queue()
+  const q = queue()
 
-  queue.enqueue(1)
-  queue.enqueue(2)
+  q.enqueue(1)
+  q.enqueue(2)
 
-  queue.dequeue()
+  q.dequeue()
 
-  t.is(queue.size(), 1)
+  t.is(q.size(), 1)
 })
 
 test('clear item from queue', t => {
-  const queue = Queue()
+  const q = queue()
 
-  queue.enqueue(1)
-  queue.enqueue(2)
+  q.enqueue(1)
+  q.enqueue(2)
 
-  queue.dequeue()
-  queue.dequeue()
+  q.dequeue()
+  q.dequeue()
 
-  t.is(queue.size(), 0)
-  t.is(queue.isEmpty(), true)
+  t.is(q.size(), 0)
+  t.is(q.isEmpty(), true)
 })
 
 test('get front item from queue', t => {
-  const queue = Queue()
+  const q = queue()
 
-  queue.enqueue(1)
-  queue.enqueue(2)
+  q.enqueue(1)
+  q.enqueue(2)
 
-  t.is(queue.front(), 1)
+  t.is(q.front(), 1)
 })

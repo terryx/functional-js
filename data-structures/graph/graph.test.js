@@ -81,5 +81,10 @@ test('breadth-first traversal', t => {
     'G',
     'H',
     'I'
-  ])
+  ]);
+
+  let shortestPathA = graph.BFS(myVertices[0]);
+
+  t.is(shortestPathA.distances['A'], 0);
+  t.is(shortestPathA.predecessors['B'], 'A');
 });

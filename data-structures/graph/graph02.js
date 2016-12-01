@@ -65,41 +65,72 @@ function Graph() {
   this.BFS = (v) => {
     let color = initializeColor();
     let queue = Queue();
-    let d = [];
-    let pred = [];
+
+    const distances = {};
+    const predecessors = {};
 
     queue.enqueue(v);
 
-    for (let i = 0; i < vertices.length; i++) {
-      d[vertices[i]] = 0; //{4}
-      pred[vertices[i]] = null; //{5}
-    }
+    vertices.forEach(vertex => {
+      distances[vertex] = 0;
+      predecessors[vertex] = null;
+    })
 
     while(!queue.isEmpty()) {
       let u = queue.dequeue();
-      let neighbors = adjList.get(u);
+      neighbors = adjList.get(u);
       color[u] = 'grey';
 
-      for (let i = 0; i < neighbors.length; i++) {
-        let w = neighbors[i];
+      neighbors.forEach(vertex => {
+        if (color[vertex] === 'white') {
+          color[vertex] = 'grey';
 
-        if (color[w] === 'white') {
-          color[w] = 'grey';
-          d[w] = d[u] + 1; //{6}
-          pred[w] = u; //{7}
+          distances[vertex] = distances[u] + 1
+          predecessors[vertex] = u;
 
-          queue.enqueue(w);
+          queue.enqueue(vertex);
         }
-      }
+      });
 
       color[u] = 'black';
     }
 
     return {
-      distances: d,
-      predecessors: pred
+      distances,
+      predecessors
     };
   }
+
+  //depth-first search
+  let dfsVisit = (u, color, callback) => {
+    color[u] = 'grey';
+
+    if (callback) {
+      callback(u);
+    }
+
+    let neighbors = adjList.get(u);
+
+    for (let i = 0; i < neighbors.length; i++) {
+      let w = neighbors[i];
+
+      if (color[w] === 'white') {
+        dfsVisit(w, color, callback);
+      }
+    }
+
+    color[u] = 'black';
+  }
+  
+  this.dfs = (callback) => {
+    let color = initializeColor();
+
+    for (let i = 0; i < vertices.length; i++) {
+      if (color[vertices[i]] === 'white') {
+        dfsVisit(vertices[i], color, callback);
+      }
+    }
+  };
 
 }
 
