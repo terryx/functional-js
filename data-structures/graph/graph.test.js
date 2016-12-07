@@ -88,3 +88,44 @@ test('breadth-first traversal', t => {
   t.is(shortestPathA.distances['A'], 0);
   t.is(shortestPathA.predecessors['B'], 'A');
 });
+
+test('depth-first search', t => {
+  const graph = new Graph();
+
+  const myVertices = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I'
+  ];
+
+  myVertices.forEach(vertex => {
+    graph.addVertex(vertex);
+  });
+
+  graph.addEdge('A', 'B');
+  graph.addEdge('A', 'C');
+  graph.addEdge('A', 'D');
+  graph.addEdge('C', 'D');
+  graph.addEdge('C', 'G');
+  graph.addEdge('D', 'G');
+  graph.addEdge('D', 'H');
+  graph.addEdge('B', 'E');
+  graph.addEdge('B', 'F');
+  graph.addEdge('E', 'I');
+
+  let shortestPathA = graph.DFS();
+});
+
+test('toposort', t => {
+  const graph = new Graph();
+  const vertices = ['A','B','C','D','E','F'];
+
+  vertices.forEach(v => graph.addVertex(v));
+  
+});

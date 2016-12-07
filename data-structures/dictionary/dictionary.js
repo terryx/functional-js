@@ -1,44 +1,45 @@
-function Dictionary() {
-  const items = {};
+const dictionary = (props = {}) => {
+  let item = props;
+  const api = {};
 
-  this.set = (key, value) => {
-    items[key] = value;
-  }
+  api.set = (key, value) => {
+    item[key] = value;
+  };
 
-  this.delete = (key) => {
-    if (!this.has(key)) {
+  api.delete = (key) => {
+    if (!api.has(key)) {
       return false;
     }
 
-    delete items[key];
+    delete item[key];
     return true;
+  };
+
+  api.has = (key) => {
+    return key in item;
+  };
+
+  api.get = (key) => {
+    return item[key];
+  };
+
+  api.size = () => {
+    return Object.keys(item).length;
+  };
+
+  api.clear = () => {
+    item = {};
+  };
+
+  api.keys = () => {
+    return Object.keys(item);
+  };
+
+  api.values = () => {
+    return Object.keys(item).map(key => item[key]);
   }
 
-  this.has = (key) => {
-    return key in items;
-  }
-
-  this.get = (key) => {
-    return this.has(key) ? items[key] : undefined;
-  }
-
-  this.clear = () => {
-    items = {};
-  }
-
-  this.size = () => {}
-
-  this.keys = () => {}
-
-  this.values = () => {
-    const values = [];
-
-    Object.keys(items).forEach(key => {
-      values.push(items[key]);
-    });
-
-    return values;
-  }
+  return Object.freeze(api);
 }
 
-module.exports = Dictionary;
+module.exports = dictionary;

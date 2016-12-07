@@ -1,4 +1,4 @@
-const Dictionary = require('../dictionary/dictionary');
+const Dictionary = require('../dictionary/dictionary01');
 const Queue = require('../queue/queue');
 
 function Graph() {
@@ -19,9 +19,7 @@ function Graph() {
     return adjList.get(vertex);
   };
 
-  //white = not visited
-  //grey = visited not explored
-  //black = completely explored
+  //white = not visited grey = visited not explored black = completely explored
   let initializeColor = () => {
     let color = [];
 
@@ -35,11 +33,11 @@ function Graph() {
   //breadth-first search
   this.bfs = (v, callback) => {
     let color = initializeColor(),
-      queue = Queue();
+    queue = Queue();
 
     queue.enqueue(v);
 
-    while(!queue.isEmpty()) {
+    while (!queue.isEmpty()) {
       let u = queue.dequeue();
       let neighbors = adjList.get(u);
 
@@ -56,7 +54,7 @@ function Graph() {
 
       color[u] = 'black';
 
-      if (callback){
+      if (callback) {
         callback(u);
       }
     }
@@ -75,7 +73,7 @@ function Graph() {
       pred[vertices[i]] = null; //{5}
     }
 
-    while(!queue.isEmpty()) {
+    while (!queue.isEmpty()) {
       let u = queue.dequeue();
       let neighbors = adjList.get(u);
       color[u] = 'grey';
@@ -95,11 +93,55 @@ function Graph() {
       color[u] = 'black';
     }
 
-    return {
-      distances: d,
-      predecessors: pred
-    };
+    return {distances: d, predecessors: pred};
   }
+
+  let time = 0;
+  this.DFS = () => {
+    let color = initializeColor(),
+    d = [],
+    f = [],
+    p = [];
+    time = [];
+
+    for (let i = 0; i < vertices.length; i++) {
+      f[vertices[i]] = 0;
+      d[vertices[i]] = 0;
+      p[vertices[i]] = null;
+    }
+
+    for (let i = 0; i < vertices.length; i++) {
+      if (color[vertices[i]] === 'white') {
+        DFSVisit(vertices[i], color, d, f, p);
+      }
+    }
+
+    return {
+      discovery: d,
+      finished: f,
+      predecessors: p
+    };
+  };
+
+  let DFSVisit = (u, color, d, f, p) => {
+    // console.log('discovered ' + u);
+    color[u] = 'grey';
+    d[u] = ++time;
+
+    let neighbors = adjList.get(u);
+    for (let i = 0; i < neighbors.length; i++) {
+      let w = neighbors[i];
+
+      if (color[w] === 'white') {
+        p[w] = u; //{6}
+        DFSVisit(w, color, d, f, p);
+      }
+    }
+
+    color[u] = 'black';
+    f[u] = ++time;
+    // console.log('explored ' + u);
+  };
 
 }
 
